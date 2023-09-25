@@ -29,7 +29,7 @@ public class TestGetAverageGradeUseCase {
             Integer value = grades.get(utorid);
 
             if (value == null) {
-                return null;
+                throw new RuntimeException("grade not found");
             }
 
             return new Grade(utorid, course, value);

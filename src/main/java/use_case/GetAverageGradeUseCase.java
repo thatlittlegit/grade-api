@@ -18,8 +18,11 @@ public final class GetAverageGradeUseCase {
         assert team != null;
 
         for (String member : team.getMembers()) {
-            Grade grade = gradeDB.getGrade(member, course);
-            if (grade == null) {
+            Grade grade;
+
+            try {
+                grade = gradeDB.getGrade(member, course);
+            } catch (RuntimeException ex) {
                 continue;
             }
 
